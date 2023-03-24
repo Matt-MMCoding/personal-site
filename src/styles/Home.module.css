@@ -55,13 +55,14 @@
 }
 
 .history {
-  width: 8vw;
-}
-
-.history:nth-child(odd) {
-  color: green;
-}
-
-.history:nth-child(even) {
+  /* width: 8vw; */
   color: pink;
+  display: flex;
+  justify-content: space-between;
+  /* width: 100%; */
+}
+
+.cmd {
+  color: green;
+  min-width: 8vw;
 }

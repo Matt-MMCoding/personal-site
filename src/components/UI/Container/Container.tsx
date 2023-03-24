@@ -6,9 +6,12 @@ const Container = forwardRef<HTMLDivElement, IContainerProps>(
   (
     {
       width,
+      minWidth,
+      maxWidth,
       height,
       display = 'flex',
       flexDirection = 'row',
+      justifyContent,
       as,
       children,
       ...rest
@@ -18,9 +21,12 @@ const Container = forwardRef<HTMLDivElement, IContainerProps>(
     return (
       <StyledContainer
         $width={width}
+        $minWidth={minWidth}
+        $maxWidth={maxWidth}
         $height={height}
         $display={display}
         $flexDirection={flexDirection}
+        $justifyContent={justifyContent}
         ref={ref}
         as={as}
         {...rest}

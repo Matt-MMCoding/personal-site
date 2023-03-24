@@ -5,8 +5,12 @@ import Container from '../UI/Container/Container';
 export const Commander: FC<any> = ({ commands }) => {
   const [text1, setText1] = useState('');
   const [text2, setText2] = useState('');
-  const [history, setHistory] = useState<string[]>(['']);
+  const [history, setHistory] = useState<any>([]);
   const [arrId, setArrId] = useState(0);
+
+  useEffect(() => {
+    console.log(history);
+  }, [history]);
 
   useEffect(() => {
     setArrId(0);
@@ -25,8 +29,7 @@ export const Commander: FC<any> = ({ commands }) => {
       } else if (text2 !== commands[arrId].output) {
         setText2((prev) => prev + commands[arrId].output.charAt(prev.length));
       } else if (text2 === commands[arrId].output) {
-        setHistory((prev) => [...prev, text1]);
-        setHistory((prev) => [...prev, text2]);
+        setHistory((prev) => [...prev, { cmd: text1, output: text2 }]);
         setText1('');
         setText2('');
         setArrId((prev) => prev + 1);
@@ -46,16 +49,15 @@ export const Commander: FC<any> = ({ commands }) => {
         <Container flexDirection="column">
           {history &&
             history.map((item, idx) => {
-              return item ? (
-                <span
-                  className={styles.history}
+              return (
+                <Container
+                  flexDirection="row"
                   key={idx}
                 >
-                  {item}
-                  <br />
-                </span>
-              ) : (
-                ''
+                  <span className={styles.history}>
+                    <span className={styles.cmd}>{item.cmd}</span> {item.output}
+                  </span>
+                </Container>
               );
             })}
         </Container>

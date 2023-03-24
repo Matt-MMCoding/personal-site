@@ -9,7 +9,13 @@ import { StyledTransientProps } from '@/types';
 
 type ContainerCssProps = Pick<
   CSSProperties,
-  'width' | 'height' | 'display' | 'flexDirection'
+  | 'width'
+  | 'height'
+  | 'display'
+  | 'flexDirection'
+  | 'justifyContent'
+  | 'minWidth'
+  | 'maxWidth'
 >;
 
 type ContainerSpacingRelatedProps = {
