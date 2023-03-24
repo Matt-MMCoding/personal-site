@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { Lato } from 'next/font/google';
 import Commander from '@/components/Commander/Commander';
 import { CommandProps, COMMANDS } from '@/constants/Commands';
 import Container from '@/components/UI/Container/Container';
@@ -11,8 +10,6 @@ import {
   useEffect,
 } from 'react';
 import styles from '@/styles/Home.module.css';
-
-const lato = Lato({ subsets: ['latin'], weight: '400' });
 
 export default function Home() {
   const [inputVal, setInputVal] = useState<string>('');
