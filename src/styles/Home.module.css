@@ -1,5 +1,6 @@
 .input_container {
   display: flex;
+  margin-top: 1rem;
 }
 
 .input_pre {
