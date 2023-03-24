@@ -1,4 +1,6 @@
 import { FC, useEffect, useState } from 'react';
+import styles from '@/styles/Home.module.css';
+import Container from '../UI/Container/Container';
 
 export const Commander: FC<any> = ({ commands }) => {
   const [text1, setText1] = useState('');
@@ -23,7 +25,8 @@ export const Commander: FC<any> = ({ commands }) => {
       } else if (text2 !== commands[arrId].output) {
         setText2((prev) => prev + commands[arrId].output.charAt(prev.length));
       } else if (text2 === commands[arrId].output) {
-        setHistory((prev) => [...prev, `${text1} ${text2}`]);
+        setHistory((prev) => [...prev, text1]);
+        setHistory((prev) => [...prev, text2]);
         setText1('');
         setText2('');
         setArrId((prev) => prev + 1);
@@ -40,11 +43,14 @@ export const Commander: FC<any> = ({ commands }) => {
   return (
     <div>
       <>
-        <p>
+        <Container flexDirection="column">
           {history &&
             history.map((item, idx) => {
               return item ? (
-                <span key={idx}>
+                <span
+                  className={styles.history}
+                  key={idx}
+                >
                   {item}
                   <br />
                 </span>
@@ -52,7 +58,7 @@ export const Commander: FC<any> = ({ commands }) => {
                 ''
               );
             })}
-        </p>
+        </Container>
         {text1 && (
           <p>
             <span>{text1} </span>
