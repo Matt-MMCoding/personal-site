@@ -53,3 +53,15 @@
     opacity: 0;
   }
 }
+
+.history {
+  width: 8vw;
+}
+
+.history:nth-child(odd) {
+  color: green;
+}
+
+.history:nth-child(even) {
+  color: pink;
+}

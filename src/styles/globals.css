@@ -89,6 +89,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: #1f212a;
   padding: 1rem;
+  font-family: var(--font-mono);
 }
 
 a {
