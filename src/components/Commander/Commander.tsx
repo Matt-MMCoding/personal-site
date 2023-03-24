@@ -12,7 +12,6 @@ export const Commander: FC<any> = ({ commands }) => {
 
   useEffect(() => {
     if (arrId >= commands.length) {
-      console.log('text1', text1);
       setText1('');
       setText2('');
       return;
@@ -24,12 +23,14 @@ export const Commander: FC<any> = ({ commands }) => {
       } else if (text2 !== commands[arrId].output) {
         setText2((prev) => prev + commands[arrId].output.charAt(prev.length));
       } else if (text2 === commands[arrId].output) {
-        setArrId((prev) => prev + 1);
         setHistory((prev) => [...prev, `${text1} ${text2}`]);
+        setText1('');
+        setText2('');
+        setArrId((prev) => prev + 1);
       }
     };
 
-    const int1 = setInterval(string1, 100);
+    const int1 = setInterval(string1, 10);
 
     return () => {
       clearInterval(int1);
