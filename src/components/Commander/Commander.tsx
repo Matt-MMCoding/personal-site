@@ -6,8 +6,6 @@ export const Commander: FC<any> = ({ commands }) => {
   const [history, setHistory] = useState<string[]>(['']);
   const [arrId, setArrId] = useState(0);
 
-  // console.log(commands);
-
   useEffect(() => {
     setArrId(0);
   }, [commands]);

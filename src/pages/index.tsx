@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { Lato } from 'next/font/google';
 import Commander from '@/components/Commander/Commander';
-import { COMMANDS } from '@/constants/Commands';
+import { CommandProps, COMMANDS } from '@/constants/Commands';
 import Container from '@/components/UI/Container/Container';
 import {
   BaseSyntheticEvent,
@@ -16,7 +16,7 @@ const lato = Lato({ subsets: ['latin'], weight: '400' });
 
 export default function Home() {
   const [inputVal, setInputVal] = useState<string>('');
-  const [command, setCommand] = useState<any>([]);
+  const [command, setCommand] = useState<string | CommandProps[]>([]);
   const [valid, setValid] = useState<boolean>(true);
 
   const inputRef = useRef<any>(null);
