@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.input_pre {
+  color: #93ddda;
+}
+
 .input_field {
   border: none;
   outline: none;
@@ -14,8 +18,8 @@
 }
 
 .input_field:focus {
-  /* outline: none; */
-  /* color: transparent; */
+  /* outline: none;
+  color: transparent; */
   text-shadow: 0px 0px 0px white;
 }
 
@@ -25,13 +29,13 @@
 
 .cursor i {
   position: absolute;
-  width: 1px;
-  height: 80%;
-  background-color: red;
-  left: 5px;
-  top: 10%;
+  width: 8px;
+  height: 1.25em;
+  background-color: blueviolet;
+  left: 2px;
+  top: 0;
   animation-name: blink;
-  animation-duration: 800ms;
+  animation-duration: 1.5s;
   animation-iteration-count: infinite;
   opacity: 1;
 }
@@ -48,14 +52,3 @@
     opacity: 0;
   }
 }
-
-/*
-.cmdinput {
-  border: none;
-  outline: none;
-  background: transparent;
-}
-
-.cmdinput:focus {
-  outline: none;
-} */

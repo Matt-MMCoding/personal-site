@@ -34,6 +34,7 @@ export default function Home() {
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    // todo: handle mobile return key
     if (e.key === 'Enter') {
       handleSubmit(e);
     }
@@ -74,7 +75,7 @@ export default function Home() {
         <form onSubmit={() => handleSubmit}>
           <div className={styles.input_container}>
             <span className={styles.input_pre}>
-              visitor@mmcoding.com:~$&nbsp;
+              visitor@mmcoding.dev:~$&nbsp;
             </span>
             <div className={styles.cursor}>
               <textarea
