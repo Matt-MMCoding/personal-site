@@ -1,8 +1,61 @@
-.main {
+.input_container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
 }
+
+.input_field {
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 16px;
+  background-color: transparent;
+  width: 100vw;
+  height: 100vh;
+  cursor: context-menu;
+}
+
+.input_field:focus {
+  /* outline: none; */
+  /* color: transparent; */
+  text-shadow: 0px 0px 0px white;
+}
+
+/* .cursor {
+  position: relative;
+}
+
+.cursor i {
+  position: absolute;
+  width: 1px;
+  height: 80%;
+  background-color: red;
+  left: 5px;
+  top: 10%;
+  animation-name: blink;
+  animation-duration: 800ms;
+  animation-iteration-count: infinite;
+  opacity: 1;
+}
+
+.cursor input:focus + i {
+  display: none;
+} */
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/*
+.cmdinput {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.cmdinput:focus {
+  outline: none;
+} */

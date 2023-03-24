@@ -1,18 +1,36 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { Lato } from 'next/font/google';
+import Commander from '@/components/Commander/Commander';
+import { COMMANDS } from '@/constants/Commands';
+import Container from '@/components/UI/Container/Container';
+import {
+  BaseSyntheticEvent,
+  KeyboardEvent,
+  useState,
+  useRef,
+  useEffect,
+} from 'react';
 import styles from '@/styles/Home.module.css';
-import { BaseSyntheticEvent, KeyboardEvent, useState } from 'react';
-import Commander from '@/components/Commander/Commaner';
 
 const lato = Lato({ subsets: ['latin'], weight: '400' });
 
 export default function Home() {
-  const [inputVal, setInputVal] = useState('');
+  const [inputVal, setInputVal] = useState<string>('');
+  const [command, setCommand] = useState<any>([]);
+  const [valid, setValid] = useState<boolean>(true);
+
+  const inputRef = useRef<any>(null);
 
   const handleSubmit = (e: BaseSyntheticEvent) => {
     e.preventDefault();
-    alert('submit');
+    setInputVal('');
+
+    if (!inputVal || !COMMANDS.hasOwnProperty) {
+      setValid(false);
+      return;
+    }
+
+    setCommand(COMMANDS[inputVal]);
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -20,6 +38,13 @@ export default function Home() {
       handleSubmit(e);
     }
   };
+
+  useEffect(() => {
+    if (!inputRef.current) {
+      return;
+    }
+    inputRef.current.focus();
+  }, []);
 
   return (
     <>
@@ -38,17 +63,33 @@ export default function Home() {
           href="/favicon.ico"
         />
       </Head>
-      <main className={`${styles.main} ${lato.className}`}>
-        <Commander />
+      <Container
+        width="100vw"
+        height="100vh"
+        as="main"
+        flexDirection="column"
+      >
+        {!valid && <span>Invalid Command...</span>}
+        {command && <Commander commands={command} />}
         <form onSubmit={() => handleSubmit}>
-          <label>visitor@mmcoding.com:~$&nbsp;</label>
-          <textarea
-            value={inputVal}
-            onChange={(e) => setInputVal(e.target.value)}
-            onKeyDown={(e) => handleKeyPress(e)}
-          />
+          <div className={styles.input_container}>
+            <span className={styles.input_pre}>
+              visitor@mmcoding.com:~$&nbsp;
+            </span>
+            <div className={styles.cursor}>
+              <textarea
+                ref={inputRef}
+                className={styles.input_field}
+                value={inputVal}
+                onChange={(e) => setInputVal(e.target.value)}
+                autoFocus
+                onKeyDown={(e) => handleKeyPress(e)}
+              />
+              <i></i>
+            </div>
+          </div>
         </form>
-      </main>
+      </Container>
     </>
   );
 }
