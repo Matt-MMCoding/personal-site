@@ -4,7 +4,7 @@
 }
 
 .input_pre {
-  color: #93ddda;
+  color: #9aefea;
 }
 
 .input_field {
@@ -57,8 +57,6 @@
 .history {
   /* width: 8vw; */
   color: pink;
-  display: flex;
-  justify-content: space-between;
   /* width: 100%; */
 }
 

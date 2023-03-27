@@ -7,8 +7,13 @@ export const StyledContainer = styled.div<IStyledContainerProps>`
     $display,
     $flexDirection,
     $justifyContent,
+    $alignItems,
     $minWidth,
     $maxWidth,
+    $color,
+    $marginTop,
+    $rowGap,
+    $columnGap,
   }) => css`
     width: ${$width};
     min-width: ${$minWidth};
@@ -17,5 +22,11 @@ export const StyledContainer = styled.div<IStyledContainerProps>`
     display: ${$display};
     flex-direction: ${$flexDirection};
     justify-content: ${$justifyContent};
+    align-items: ${$alignItems}
+    color: ${$color};
+    margin-top: ${$marginTop};
+    row-gap: ${$rowGap};
+    column-gap: ${$columnGap};
+    // overflow: hidden;
   `}
 `;

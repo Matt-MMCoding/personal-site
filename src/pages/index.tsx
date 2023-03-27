@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Commander from '@/components/Commander/Commander';
-import { CommandProps, COMMANDS } from '@/constants/Commands';
+import { CommandObjKeys, CommandProps, COMMANDS } from '@/constants/Commands';
 import Container from '@/components/UI/Container/Container';
 import {
   BaseSyntheticEvent,
@@ -10,24 +10,34 @@ import {
   useEffect,
 } from 'react';
 import styles from '@/styles/Home.module.css';
+import { useEffectOnce } from 'react-use';
 
 export default function Home() {
   const [inputVal, setInputVal] = useState<string>('');
-  const [command, setCommand] = useState<string | CommandProps[]>([]);
-  const [valid, setValid] = useState<boolean>(true);
+  const [prevInputVal, setPrevInputVal] = useState<string>('');
+  const [command, setCommand] = useState<CommandProps[]>([]);
 
-  const inputRef = useRef<any>(null);
+  useEffectOnce(() => {
+    setCommand(COMMANDS.welcome);
+
+    return () => {
+      setCommand([]);
+    };
+  });
+
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const handleSubmit = (e: BaseSyntheticEvent) => {
     e.preventDefault();
+    setPrevInputVal(inputVal);
     setInputVal('');
 
-    if (!inputVal || !COMMANDS.hasOwnProperty) {
-      setValid(false);
+    if (!inputVal || !COMMANDS.hasOwnProperty(inputVal)) {
+      setCommand(COMMANDS.notfound);
       return;
     }
 
-    setCommand(COMMANDS[inputVal]);
+    setCommand(COMMANDS[inputVal as CommandObjKeys]);
   };
 
   const handleKeyPress = (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -67,7 +77,11 @@ export default function Home() {
         as="main"
         flexDirection="column"
       >
-        {!valid && <span>Invalid Command...</span>}
+        {prevInputVal && (
+          <span className={styles.input_pre}>
+            visitor@mmcoding.dev:~$ {prevInputVal}
+          </span>
+        )}
         {command && <Commander commands={command} />}
         <form onSubmit={() => handleSubmit}>
           <div className={styles.input_container}>

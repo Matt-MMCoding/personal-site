@@ -12,6 +12,11 @@ const Container = forwardRef<HTMLDivElement, IContainerProps>(
       display = 'flex',
       flexDirection = 'row',
       justifyContent,
+      alignItems = 'left',
+      color,
+      marginTop,
+      rowGap = 0,
+      columnGap = 0,
       as,
       children,
       ...rest
@@ -26,7 +31,12 @@ const Container = forwardRef<HTMLDivElement, IContainerProps>(
         $height={height}
         $display={display}
         $flexDirection={flexDirection}
+        $alignItems={alignItems}
         $justifyContent={justifyContent}
+        $color={color}
+        $marginTop={marginTop}
+        $rowGap={rowGap}
+        $columnGap={columnGap}
         ref={ref}
         as={as}
         {...rest}

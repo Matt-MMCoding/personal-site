@@ -14,13 +14,15 @@ type ContainerCssProps = Pick<
   | 'display'
   | 'flexDirection'
   | 'justifyContent'
+  | 'alignItems'
   | 'minWidth'
   | 'maxWidth'
+  | 'color'
 >;
 
 type ContainerSpacingRelatedProps = {
-  columnGap?: number;
-  rowGap?: number;
+  columnGap?: string;
+  rowGap?: string;
   padding?: number;
   paddingTop?: number;
   paddingBottom?: number;
@@ -28,7 +30,7 @@ type ContainerSpacingRelatedProps = {
   paddingRight?: number;
   position?: 'static' | 'fixed' | 'relative' | 'absolute' | 'sticky';
   margin?: number | 'auto';
-  marginTop?: number;
+  marginTop?: string;
   marginBottom?: number;
   marginLeft?: number;
   marginRight?: number;
