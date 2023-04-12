@@ -19,7 +19,7 @@ export const COMMANDS: CommandObjProps = {
     {
       cmd: ' ',
       output:
-        'Welcome to my interactive web terminal. For a list of commands, type "help"',
+        'Welcome to my interactive web terminal. For a list of commands, type "help". Please note, this site is under construction',
       href: '',
     },
   ],
